@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+int findMax(int arr[], int n) {
+    int left = 0;
+    int right = n - 1;
+
+    while (left <= right) {
+        int middle = (left + right) / 2;
+
+        if (arr[middle] > arr[middle + 1]) {
+            right = middle;
+        }
+        else {
+            left = middle + 1;
+        }
+    }
+    return arr[left];
+}
+
+int main() {
+    int arr[] = { 3, 6, 1, 8, 4, 2 };
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    int max = findMax(arr, n);
+    cout << "The maximum element is: " << max << endl;
+
+    return 0;
+}
